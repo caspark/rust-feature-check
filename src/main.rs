@@ -27,3 +27,13 @@ pub fn test_pclmulqdq() -> i32 {
         0
     }
 }
+
+/// f16c is needed for `half`'s `f16` type: https://docs.rs/half/latest/half/index.html#hardware-support
+#[no_mangle]
+pub fn test_f16c() -> i32 {
+    if is_x86_feature_detected!("f16c") {
+        4
+    } else {
+        0
+    }
+}
